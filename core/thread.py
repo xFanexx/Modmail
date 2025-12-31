@@ -1996,26 +1996,16 @@ class Thread:
                     async with self.bot.session.get(i.url) as resp:
                         data = await resp.read()
 
-                    # convert to a png
+                    # convert to a png locally
                     img_data = await self.bot.loop.run_in_executor(
                         None, functools.partial(lottie_to_png, data)
                     )
-                    b64_data = base64.b64encode(img_data).decode()
-
-                    # upload to imgur
-                    async with self.bot.session.post(
-                        "https://api.imgur.com/3/image",
-                        headers={"Authorization": "Client-ID 50e96145ac5e085"},
-                        data={"image": b64_data},
-                    ) as resp:
-                        result = await resp.json()
-                        url = result["data"]["link"]
-
                 except Exception:
                     traceback.print_exc()
                     images.append((None, i.name, True))
                 else:
-                    images.append((url, i.name, True))
+                    # External image hosting disabled. Do not upload to third-party services.
+                    images.append((None, i.name, True))
             else:
                 images.append((None, i.name, True))
 
