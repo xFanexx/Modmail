@@ -221,7 +221,7 @@ class ConfigManager:
         "file_log_format": "plain",
         "discord_log_level": "INFO",
         # data collection
-        "data_collection": True,
+        "data_collection": False,
     }
 
     colors = {
