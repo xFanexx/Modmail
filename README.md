@@ -1,4 +1,4 @@
-# Modmail — Privacy-focused (clean) fork
+# Modmail - Privacy-focused (clean) fork
 
 This repository is a cleaned, privacy-focused fork of Modmail intended for self-hosted use. It does not perform automatic telemetry or metadata uploads to external servers.
 
